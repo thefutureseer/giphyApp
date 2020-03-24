@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" >
+  <title>Giphy fun</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js" ></script>
+</head>
+<body>
+  <div > 
+    <h1>Topics</h1>
+    <!--Dynamically created buttons here -->
+    <div id="topic-buttons"  ></div>
+    
+    <!--Show gif-->
+    <div id="show-gif"></div>
+
+  </div>
+  <script type="text/javascript">
+    var topics = [ "animals", "movies", "gym", "jokes", "scenery", "technology" ];
+
+    function renderButton() {
+
+      for (var i = 0; i < topics.length; i++) {
+        
+        var a = $("<button>");
+        a.attr("data-name", topics[i]);
+        a.text(topics[i]);
+        $("#topic-buttons").append(a);
+      }
+    }
+    renderButton();
+
+    $("button").on("click", function() { 
+      var topic = $(this).attr("data-name");
+      var queryURL = "https://api.giphy.com/v1/gifs/search?q=" +
+        topic + "&api_key=dc6zaTOxFJmzC&limit=10";
+      $.ajax({
+        url: queryURL,
+        method: "GET"
+      }).then(function(response) {
+        console.log(response);
+        var gifInf = response.data;
+
+        for (var i = 0; i < gifInf.length; i++) {
+          var gifDiv = $("<div>");
+          var PRating = $("<p>").text(gifInf[i].rating);
+          var PName = $("<p>").text(gifInf[i].title);
+
+          var gif = $("<img>");
+          gif.addClass("ply-gif");
+          gif.attr("src", gifInf[i].images.fixed_height_still.url);
+          gif.attr("data-still", gifInf[i].images.fixed_height_still.url);
+          gif.attr("data-animate", gifInf[i].images.fixed_height.url);
+          gif.attr("data-state", "still");
+          
+          gifDiv.prepend(PRating, PName);
+          gifDiv.prepend(gif);
+
+          $("#show-gif").prepend(gifDiv);
+        }
+
+          $(".ply-gif").on("click", function() {
+          var state = $(this).attr("data-state");
+
+          $(this).attr("src", $(this).attr("data-animate"));
+          $(this).attr("data-state", "animate");
+      })
+      });
+    });
+
+
+
+  </script>
+</body>
+</html>
