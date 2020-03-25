@@ -1,5 +1,5 @@
 # giphyApp with Giphy dev API
-WHIP building more functionality.
+WIP building more functionality.
 
 Find Gifs play and pause them. 
 

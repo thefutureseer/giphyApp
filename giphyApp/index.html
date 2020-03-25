@@ -3,14 +3,26 @@
 <head>
   <meta charset="UTF-8" >
   <title>Giphy fun</title>
+  <link rel="stylesheet" href="style.css">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js" ></script>
 </head>
 <body>
   <div > 
-    <h1>Topics</h1>
+    <h1>Gif Topics</h1>
+    <h3>Click a button & see the gif to go with it:</h3>
     <!--Dynamically created buttons here -->
-    <div id="topic-buttons"  ></div>
-    
+    <div id="topic-buttons"></div>
+
+    <!--Input -->
+    <form id="gif-form">
+    <label for="input-1">Add a hot topic:</label>
+    <input id="input-1" type="text" placeholder="Gif to see" >
+    <br>
+
+    <!--Button to send input-->
+    <input id="add-gif" type="submit" val="submit">
+    </form>
+
     <!--Show gif-->
     <div id="show-gif"></div>
 
