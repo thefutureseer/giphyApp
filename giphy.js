@@ -42,6 +42,8 @@
             gifDiv.prepend(PRating, PName);
             gifDiv.prepend(gif);
 
+            $("#hide-1").css("display","block");
+
             $("#show-gif").prepend(gifDiv);
           }
 
