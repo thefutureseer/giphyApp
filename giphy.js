@@ -7,7 +7,7 @@
       for (var i = 0; i < topics.length; i++) {
         
         var a = $("<button>");
-        a.addClass("ply-gif");
+        a.addClass("gif-btn");
         a.attr("data-name", topics[i]);
         a.text(topics[i]);
         $("#topic-buttons").append(a);
@@ -16,7 +16,7 @@
 
     function gifFun() {
   //Click a button to display name, rating and gifs, of the button label word/name
-      $(".ply-gif").on("click", function() { 
+      $(".gif-btn").on("click", function() { 
         var topic = $(this).attr("data-name");
         var queryURL = "https://api.giphy.com/v1/gifs/search?q=" +
           topic + "&api_key=dc6zaTOxFJmzC&limit=10";
@@ -74,5 +74,5 @@
     });
 
  //Add event listeners
-    $(document).on("click", ".ply-gif", gifFun);
+    $(document).on("click", ".gif-btn", gifFun);
     renderButton();

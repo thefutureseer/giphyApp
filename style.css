@@ -1,3 +1,24 @@
+html { 
+  background: url(/dock\ pic.jpg) no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}  
+#container{
+ margin: 4em 29em;
+}
 #topic-buttons {
   margin-bottom: 2em;
+}
+.gif-btn {
+  background-color: aqua;
+  margin: 3px;
+}
+#btn-2 {
+  background-color: red;
+  margin: 7px;
+}
+.ply-gif-2 {
+  margin: 3em;
 }
